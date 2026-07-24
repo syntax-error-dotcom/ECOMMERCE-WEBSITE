@@ -1,0 +1,18 @@
+<?php
+//show real time error during development
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+require_once '../app/config/database.php';
+
+//load all core files
+require_once '../app/cores/Database.php';
+require_once '../app/cores/Controller.php';
+require_once '../app/cores/App.php';
+require_once '../app/cores/Router.php';
+
+
+$app = new App();
+
+
+?>
