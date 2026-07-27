@@ -24,7 +24,7 @@ class ProductModel {
 
     //gets the product by id
     public function getProductbyId($id) {
-        $stmt = $this->conn->prepare("SELECT *FROM products WHERE product_id = ?");
+        $stmt = $this->conn->prepare("SELECT * FROM products WHERE product_id = ?");
         $stmt->execute([$id]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
@@ -41,6 +41,21 @@ class ProductModel {
             $data['stock'],
             $data['image1'],
             $data['image2']
+        ]);
+    }
+
+    public function updateProduct($id, $data) {
+        $stmt = $this->conn->prepare("UPDATE products SET category_id = ?, product_name = ?, product_desc = ?, 
+        price = ?, stock = ?, image1 = ?, image2 = ? WHERE product_id = ?");
+        $stmt->execute([
+            $data['category_id'],
+            $data['product_name'],
+            $data['product_desc'],
+            $data['price'],
+            $data['stock'],
+            $data['image1'],
+            $data['image2'],
+            $id
         ]);
     }
 
